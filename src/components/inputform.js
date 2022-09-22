@@ -8,7 +8,7 @@ favmov: "",
 rating: ''
    })
    const handleSubmit = (e) => {
-    e.preventDefault();
+    
    axios
    .post('http://localhost:4300/operation/datafromuser',inputs)
    .then((response)=>{
@@ -21,16 +21,25 @@ if (response.statusText=="OK"){
 else{
     document.getElementById("successmsg").innerHTML = "Error sending data. Please try again Later"
 }
+
    })
    .catch((err)=>{
     console.log(err)
    })
+   e.preventDefault();
   }
   const updateusername = (event) => {
     changedatafunction(previousState => {
       return { ...previousState, username: event.target.value}
     });
   }
+
+  const updateimgaddress = (event) => {
+    changedatafunction(previousState => {
+      return { ...previousState, img: event.target.value}
+    });
+  }
+
   const updatefavmov = (event) => {
     changedatafunction(previousState => {
       return { ...previousState, favmov: event.target.value}
@@ -41,7 +50,7 @@ else{
       return { ...previousState, rating: event.target.value}
     });
   }
-
+  
 return(
     <div className="userform">
    <h2>Please fill the details for your favourite movie</h2>
@@ -67,7 +76,6 @@ return(
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
-
       </select>
 <br />
 <button type="submit">Submit</button><br />
@@ -76,5 +84,4 @@ return(
    </div>
 )
 }
-
 export default Inputform;

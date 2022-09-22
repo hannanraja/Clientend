@@ -1,15 +1,17 @@
 import './component.css'
 import {useState} from 'react'
 import React from 'react'
+import axios from 'axios'
 
-function FormPopUp(){
+function FormPopUp(props){
 
     const [newvalue,setnewvalue] = useState({
-        username: "",
-        favmov :"" ,
-        rating : ""
+        username: props.usernme,
+        favmov :props.favmovie,
+        rating : props.rating,
+        id: props.newid
     })
-
+console.log(newvalue.myid)
     const updateusername = (event) => {
         setnewvalue(previousState => {
           return { ...previousState, username: event.target.value}
@@ -25,13 +27,22 @@ function FormPopUp(){
           return { ...previousState, rating: event.target.value}
         });
       }
-    function insertvalues(){
-        console.log("added values")
+    function insertvalues (e){
+       var url = "http://localhost:4300/operation/updatedataindb/" + newvalue.id
+       axios
+       .patch(url, newvalue)
+       .then((res)=>{
+        console.log(res.statusText)
+       })
+       .catch(err=> console.log(err))
+       document.location.reload(true);
+       e.preventDefault();
     }
+
     return (
         <div id="pop-up" className="popup"> 
         <span className="closebutton">X</span>  
-<form onSubmit={insertvalues}>
+<form id="newform" onSubmit={insertvalues}>
         <input 
             placeholder="username" 
             id="username" 

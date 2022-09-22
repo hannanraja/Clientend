@@ -3,13 +3,14 @@ import './component.css'
 import {useState, useEffect} from 'react'
 import deleteimg from './delete.png'
 import editimg from './edit.png'
-import FormPopUp from "./Formpopup";
-
+import FormPopUp from "./Formpopup"
+import React from "react"
 function ShowData(){
-const [showpop , setpopup] = useState(true)
-const handlepopup = (e)=>{
-setpopup (!showpop)
-}
+   
+       var indexnum= -1;
+const [showpop , setpopup] = useState(false)
+
+
 const [newdata, setnewdata] = useState({
     username :"" ,
     favmov : "",
@@ -40,6 +41,7 @@ const [newdata, setnewdata] = useState({
     function Deletefunc(e){
     
                 var delurl = "http://localhost:4300/operation/deletedata/"+ e.target.id;
+                console.log(delurl)
                 axios
                 .delete(delurl)
                 .then((res)=>{
@@ -54,13 +56,23 @@ const [newdata, setnewdata] = useState({
                 console.log(err)
                 })
     }
+    
     function Editfunc(e){
-        handlepopup(e);
-{showpop && <div className="popups"><FormPopUp /></div>}
-console.log(showpop)
-            
-    }
 
+        var indextr = e.target.id;
+        var user_name = data[indextr].username
+        var fav_mov = data[indextr].favmov
+        var ratings = data[indextr].rating
+        var idtoget = data[indextr]._id 
+          setnewdata({
+            username: user_name,
+            favmov: fav_mov,
+            rating : ratings,
+            id: idtoget
+          })     
+          setpopup(!showpop)
+          
+    }   
     const [data, setdata] = useState([])
 
     useEffect(()=>{
@@ -74,6 +86,7 @@ console.log(showpop)
         return(
             <div className="datashowmain">
             <input type="text" placeholder="Search by Username" onChange={search} id="searchbar"></input>
+            { showpop && <div>< FormPopUp usernme={newdata.username} favmovie={newdata.favmov} rating={newdata.rating} newid={newdata.id}/></div> }
             <table id="myTable">
             <tr>
                 <th>Favourite Movie</th>
@@ -84,6 +97,7 @@ console.log(showpop)
             </tr>
                 {
                 data.map((mapdata)=>{
+                 indexnum += 1;
                     return(
                         <tr key={mapdata._id}>
                             <td>
@@ -96,22 +110,26 @@ console.log(showpop)
             {mapdata.username}
                             </td>
                             <td>
-                            <div className="imgdelete">
-                            <img src={editimg} id={mapdata._id} onClick={Editfunc}></img><span className="texttooltip">Edit entry</span>
+                            <div className="imgedit">
+                            <img src={editimg} id={indexnum} onClick={Editfunc}></img><span className="texttooltip">Edit entry</span>
                             </div>
                             </td>
                             <td>
+                         
             <div className="imgdelete">
             <img src={deleteimg} id={mapdata._id} onClick={Deletefunc}></img><span className="texttooltip">Delete entry</span>
             </div>
                             </td>
                         </tr>
+                      
                     )
+               
+             
                 })
+       
                 }
             </table>
-            <span id="popups"></span>
-            <h3 id="responsemsg"></h3>
+        <h3 id="responsemsg"></h3>
             </div>
 
             )
