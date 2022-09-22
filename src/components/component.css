@@ -1,0 +1,126 @@
+.userform{
+    margin:auto;
+    text-align: center;
+}
+.userform input {
+    font-size: 22px;
+    padding: 10px 10px;
+    border-radius: 10px 0px 10px 0px;
+    width: 60%;
+    margin: 10px 0px;
+}
+.userform button{
+    width:63%;
+    background-color: green;
+    color:white;
+    font-size: 22px;
+    padding:10px 10px;
+    outline:none;
+    border: none;
+    border-radius: 10px 0px 10px 0px;
+    box-shadow: 1px 3px #888888;
+    transition: 1s box-shadow;
+}
+.userform button:hover{
+    opacity: 0.7;
+    width:64%;
+    box-shadow: 3px 6px #888888;
+}
+.userform select{
+    font-size: 22px;
+    padding: 10px 10px;
+    border-radius: 10px 0px 10px 0px;
+    width: 63%;
+    margin: 10px 0px;
+    border:2px groove black;
+}
+table{
+    border: 1px solid black;
+margin: 40px 5px;
+}
+tr{
+    border-bottom: 3px solid black;
+    width:100%;
+}
+th{
+    background-color: black;
+    color:white;
+    padding: 10px 3px;
+}
+td{
+    width:20%;
+    padding: 10px 3px;
+    border-left:3px groove black;
+}
+td img{
+    max-width: 30px;    
+}
+td img:hover{
+    cursor:pointer;
+}
+.texttooltip{
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    margin-left:4px;
+    position: absolute;
+    z-index: 1;
+    opacity:0.8;
+}
+.imgdelete:hover .texttooltip {
+    visibility: visible;
+}
+.popup{
+    position: fixed;
+    top:25%;
+    left: 25%;
+    top:25%;
+    bottom:25%;
+    background-color: black;
+    z-index:999;
+    border-radius: 20px;
+    width:20%;
+    height: 20%;
+    text-align: center;
+    margin:auto;
+    padding: 40px 20px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 0px 600px 3px, rgb(0 0 0 / 20%) 0px 0px 900px 6px, rgb(0 0 0 / 20%) 0px 0px 1400px 1500px, rgb(0 0 0 / 20%) 0px 0px 1800px 2200px, rgb(0 0 0 / 20%) 0px 0px 2100px 2600px
+    }
+    .closebutton{
+        position: absolute;
+        top:0;
+        left:0;
+        border-radius: 50%;
+        padding: 1px 8px;
+        background-color: black;
+        color:yellow;
+        font-weight:700;
+        margin-bottom: -30px;
+    }
+    .closebutton:hover {
+        cursor:pointer;
+        color:white;
+        font-size:20px;
+    }
+    .popup input{
+width: 80%;
+font-size: 20px;
+    border-radius: 10px 0px 10px 0px;
+margin-top: 10px;
+    }
+.popup select{
+    width: 84%;
+    font-size: 20px;
+    border-radius: 10px 0px 10px 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.popup button{
+    width: 84%;
+    background-color: white;
+    color:black;
+}

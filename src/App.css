@@ -1,7 +1,21 @@
 .App {
   text-align: center;
+  margin: 60px 0px;
 }
-
+.halfone{
+  width:48vw;
+  margin:5px;
+}
+.halftwo{
+  width:48vw;
+  margin:5px;
+}
+.main{
+  display:flex;
+  margin:auto;
+  align-content: center;
+  align-items: center;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
