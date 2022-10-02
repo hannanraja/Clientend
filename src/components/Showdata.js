@@ -5,6 +5,9 @@ import deleteimg from './delete.png'
 import editimg from './edit.png'
 import FormPopUp from "./Formpopup"
 import React from "react"
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import fileDownload from 'js-file-download'
 function ShowData(){
    
        var indexnum= -1;
@@ -56,7 +59,59 @@ const [newdata, setnewdata] = useState({
                 console.log(err)
                 })
     }
+
+    const exportPDF = () => {
+        const unit = "pt";
+        const size = "A4"; 
+        const orientation = "portrait";
     
+        const marginLeft = 40;
+        const doc = new jsPDF(orientation, unit, size);
+    
+        doc.setFontSize(15);
+    
+        const title = "Movie Flex table";
+        const headers = [["Favorite movie", "Ratings" , "Username"]];
+    
+        const data1 = data.map(elt=> [elt.favmov, elt.rating, elt.username]);
+    
+        let content = {
+          startY: 50,
+          head: headers,
+          body: data1
+        };
+    
+        doc.text(title, marginLeft, 40);
+        doc.autoTable(content);
+        doc.save("report.pdf")
+      }
+
+
+
+      function sortTable() {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("myTable");
+        switching = true;
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < (rows.length - 1); i++) {
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[0];
+            y = rows[i + 1].getElementsByTagName("TD")[0];
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              shouldSwitch = true;
+              break;
+            }
+          }
+          if (shouldSwitch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+      }  
     function Editfunc(e){
 
         var indextr = e.target.id;
@@ -85,7 +140,14 @@ const [newdata, setnewdata] = useState({
 
         return(
             <div className="datashowmain">
-            <input type="text" placeholder="Search by Username" onChange={search} id="searchbar"></input>
+                <div class="fullcol">
+                    <div className="halfcol">
+                        <input type="text" placeholder="Search by Username" onChange={search} id="searchbar"></input>
+                    </div>
+                    <div className="halfcol">
+                        <button onClick={sortTable}>Sort</button>
+                    </div>
+                </div>
             { showpop && <div>< FormPopUp usernme={newdata.username} favmovie={newdata.favmov} rating={newdata.rating} newid={newdata.id}/></div> }
             <table id="myTable">
             <tr>
@@ -130,6 +192,7 @@ const [newdata, setnewdata] = useState({
                 }
             </table>
         <h3 id="responsemsg"></h3>
+        <button onClick={exportPDF}> Download Table</button>
             </div>
 
             )

@@ -9,6 +9,18 @@
     width: 60%;
     margin: 10px 0px;
 }
+.halfcol{
+    width:50%;
+    float:left;
+    padding: 20px 0px;
+    text-align: center;
+}
+.halfcol button{
+    background-color: green;
+    color:white;
+    font-size: 16px;
+    padding:5px 20px;
+}
 .userform button{
     width:63%;
     background-color: green;
@@ -26,6 +38,9 @@
     width:64%;
     box-shadow: 3px 6px #888888;
 }
+button:hover{
+    cursor: pointer;
+}
 .userform select{
     font-size: 22px;
     padding: 10px 10px;
@@ -37,6 +52,8 @@
 table{
     border: 1px solid black;
 margin: 40px 5px;
+background-color: rgba(255, 254, 254, 0.688);
+box-shadow: 4px 19px 200px 1px black;
 }
 tr{
     border-bottom: 3px solid black;
