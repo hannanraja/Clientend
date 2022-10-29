@@ -4,13 +4,12 @@ import axios from "axios";
 function Inputform(){
    const[inputs, changedatafunction]= useState({
 username : "",
-favmov: "",
-rating: ''
+password: ''
    })
    const handleSubmit = (e) => {
     
    axios
-   .post('http://localhost:4300/operation/datafromuser',inputs)
+   .post('http://localhost:4300/useroperations/newentry',inputs)
    .then((response)=>{
 if (response.statusText=="OK"){
     document.getElementById("successmsg").innerHTML = "Data sent successfully"
@@ -36,24 +35,14 @@ else{
 
   const updateimgaddress = (event) => {
     changedatafunction(previousState => {
-      return { ...previousState, img: event.target.value}
+      return { ...previousState, password: event.target.value}
     });
   }
-
-  const updatefavmov = (event) => {
-    changedatafunction(previousState => {
-      return { ...previousState, favmov: event.target.value}
-    });
-  }
-  const updaterating = (event) => {
-    changedatafunction(previousState => {
-      return { ...previousState, rating: event.target.value}
-    });
   }
   
 return(
     <div className="userform">
-   <h2>Please fill the details for your car registration</h2>
+   <h2>To login enter the</h2>
    <form onSubmit={handleSubmit}>
 <input 
     placeholder="Car name" 
@@ -63,20 +52,8 @@ return(
     name="username" 
     type="text">
         </input> <br />
-<input 
-    placeholder="Car model" 
-    id="fav_movie" name="fav_movie" 
-    value={inputs.favmov|| ""} 
-    onChange={updatefavmov} 
-    type="text">
-        </input><br />
-        <select value={inputs.rating} onChange={updaterating}>
-        <option value="Sedan">Sedan</option>
-                <option value="Bus">Bus</option>
-                <option value="Car">Car</option>
-                <option value="Car">Hatchback</option>
-                <option value="Truck">Truck</option>
-      </select>
+<br />
+       
 <br />
 <button type="submit">Submit</button><br />
    </form>

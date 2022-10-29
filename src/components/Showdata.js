@@ -142,7 +142,7 @@ const [newdata, setnewdata] = useState({
             <div className="datashowmain">
                 <div class="fullcol">
                     <div className="halfcol">
-                        <input type="text" placeholder="Search by Username" onChange={search} id="searchbar"></input>
+                        <input type="text" placeholder="Search Car name" onChange={search} id="searchbar"></input>
                     </div>
                     <div className="halfcol">
                         <button onClick={sortTable}>Sort</button>
@@ -151,9 +151,9 @@ const [newdata, setnewdata] = useState({
             { showpop && <div>< FormPopUp usernme={newdata.username} favmovie={newdata.favmov} rating={newdata.rating} newid={newdata.id}/></div> }
             <table id="myTable">
             <tr>
-                <th>Favourite Movie</th>
-                <th>Rating</th>
-                <th>Username</th>
+                <th>Car model</th>
+                <th>Car type</th>
+                <th>Car Name</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>

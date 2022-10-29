@@ -2,6 +2,22 @@
   text-align: center;
   margin: 60px 0px;
 }
+.flty{
+  position: absolute;
+  top: -10;
+  left: 90%;
+  background-color: blue;
+  color:white;
+  padding: 10px 20px;
+}
+.flty2{
+  position: absolute;
+  top: -10;
+  left: 80%;
+  background-color: blue;
+  color:white;
+  padding: 10px 20px;
+}
 body{
 background-image: url('./background.jpg');
 background-size: cover;

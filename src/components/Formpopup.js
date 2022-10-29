@@ -44,7 +44,7 @@ console.log(newvalue.myid)
         <span className="closebutton">X</span>  
 <form id="newform" onSubmit={insertvalues}>
         <input 
-            placeholder="username" 
+            placeholder="Car name" 
             id="username" 
             value={newvalue.username || ""}   
             onChange={updateusername} 
@@ -52,18 +52,18 @@ console.log(newvalue.myid)
             type="text">
                 </input> <br />
         <input 
-            placeholder="Favourite movie" 
+            placeholder="car model" 
             id="fav_movie" name="fav_movie" 
             value={newvalue.favmov|| ""} 
             onChange={updatefavmov} 
             type="text">
                 </input><br />
         <select value={newvalue.rating} onChange={updaterating}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+                <option value="Sedan">Sedan</option>
+                <option value="Bus">Bus</option>
+                <option value="Car">Car</option>
+                <option value="Car">Hatchback</option>
+                <option value="Truck">Truck</option>
 
             </select>
         <br />
